@@ -1,0 +1,20 @@
+cat << 'EOF' > index.html
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Vägvisare - Botkyrka</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Botkyrka Digital Vägvisare</h1>
+        <p>Hitta rätt hjälp och stöd i din närhet.</p>
+    </header>
+
+    <main>
+        <section class="help-points">
+            <h2>Hjälpställen i Botkyrka</h2>
+            <div class="card-grid">
+          

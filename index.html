@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Vägvisare - Botkyrka</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Botkyrka Digital Vägvisare</h1>
+        <p>Hitta rätt hjälp och stöd i din närhet.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Hjälpställen i Botkyrka</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>1. Medborgarkontoret Tumba</h3>
+                    <p>Hjälp med kommunala tjänster, vägledning och blanketter.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Fittja Bibliotek & Info</h3>
+                    <p>Stöd med digitala tjänster, läxhjälp och information.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Socialtjänstens Mottagning</h3>
+                    <p>Rådgivning och akut stöd för vuxna och familjer.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="guides">
+            <h2>Korta Guider</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Guide 1: Hur du söker ekonomiskt bistånd</h3>
+                    <p>En enkel checklista på vad du behöver förbereda innan.</p>
+                </div>
+                <div class="card">
+                    <h3>Guide 2: Kontakta kommunen effektivt</h3>
+                    <p>Tips på hur du enklast når rätt person via telefon eller e-tjänst.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="ai-section">
+            <h2>Botkyrka AI-Assistent</h2>
+            <div class="chat-container">
+                <div id="chat-output" style="background: #e9ecef; padding: 15px; border-radius: 5px; height: 120px; overflow-y: auto; margin-bottom: 10px;">
+                    Hej! Ställ en fråga om våra hjälpställen eller guider här nedanför.
+                </div>
+                <input type="text" id="user-input" placeholder="Skriv din fråga här..." style="width: 75%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <button id="send-btn" style="width: 20%; padding: 10px; background: #005a9c; color: white; border: none; border-radius: 4px; cursor: pointer;">Fråga</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Botkyrka Vägvisare (GenAI Prototype)</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
