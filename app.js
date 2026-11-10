@@ -19,9 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function generateResponse(text) {
-            // Specificering för digitala tjänster (Ny funktion utifrån feedback!)
-            if (text.includes('digital') || text.includes('dator') || text.includes('it-hjälp') || text.includes('internet')) {
-                return 'For digital services and computer assistance, Fittja Library is your best option. You can also get general digital guidance at Citizen Center Tumba.';
+            // Språkfrågor / Languages spoken by staff
+            if (text.includes('språk') || text.includes('language') || text.includes('talar') || text.includes('speak')) {
+                return 'I do not have information about which specific languages the staff speak. Please contact Fittja Library directly at +46 8-530 626 40 to ask.';
+            }
+            // Digital hjälp / Digital support
+            else if (text.includes('digital') || text.includes('dator') || text.includes('it-hjälp') || text.includes('internet')) {
+                return 'For digital services, computer assistance, and printing, Fittja Library is your primary location. General guidance is also available at Citizen Center Tumba.';
             }
             // Öppettider / Hours
             else if (text.includes('öppet') || text.includes('tid') || text.includes('hour') || text.includes('open')) {
@@ -41,9 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } 
             // Hälsningar / Greetings
             else if (text.includes('hej') || text.includes('tjena') || text.includes('hallo') || text.includes('hi') || text.includes('hello')) {
-                return 'Hello! I can answer questions about opening hours, addresses, contact details, and how to apply for financial aid in Botkyrka.';
+                return 'Hello! I can answer questions about opening hours, addresses, contact details, and digital assistance in Botkyrka.';
             } 
-            // Tydligare fallback när boten INTE vet svaret (Förbättrat utifrån feedback!)
+            // Fallback om information saknas
             else {
                 return 'I do not have that specific information in my database. Please contact the service directly using the provided links or phone numbers to ask.';
             }
@@ -72,18 +76,69 @@ document.addEventListener('DOMContentLoaded', () => {
             const term = e.target.value.toLowerCase();
             cards.forEach(card => {
                 const text = card.textContent.toLowerCase();
-                if (text.includes(term)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                card.style.display = text.includes(term) ? 'block' : 'none';
             });
         });
     }
 
-    // --- 3. TILLGÄNGLIGHET & SPRÅK LOGIK ---
+    // --- 3. DYNAMISK ÖVERSÄTTNING & TILLGÄNGLIGHET ---
     const ttsBtn = document.getElementById('tts-btn');
     const langSelect = document.getElementById('lang-select');
+
+    const translations = {
+        sv: {
+            headerTitle: "Botkyrka Assistent & Vägvisare",
+            headerSubtitle: "Hitta rätt kommunal service och stöd i Botkyrka",
+            searchPlaceholder: "Sök service eller plats...",
+            ttsText: "🔊 Läs upp text",
+            chatTitle: "Botkyrka AI-Assistent",
+            card1Title: "1. Medborgarkontoret Tumba",
+            card1Desc: "Få hjälp med konsumentvägledning, blanketter och allmänna frågor.",
+            card2Title: "2. Fittja Bibliotek & Digital Hjälp",
+            card2Desc: "Låna böcker, använda datorer, skriva ut och få hjälp med digitala tjänster.",
+            card3Title: "3. Socialtjänstens Mottagning",
+            card3Desc: "Rådgivning och akut stöd för vuxna och familjer.",
+            labels: { address: "Adress", hours: "Öppettider", phone: "Telefon" }
+        },
+        en: {
+            headerTitle: "Botkyrka Assistant & Guide",
+            headerSubtitle: "Find municipal services and support in Botkyrka",
+            searchPlaceholder: "Search service or location...",
+            ttsText: "🔊 Read Aloud",
+            chatTitle: "Botkyrka AI Assistant",
+            card1Title: "1. Citizen Center Tumba",
+            card1Desc: "Get assistance with consumer guidance, forms, and general inquiries.",
+            card2Title: "2. Fittja Library & Digital Aid",
+            card2Desc: "Borrow books, use computers, print, and get help with digital services.",
+            card3Title: "3. Social Services Reception",
+            card3Desc: "Guidance and emergency support for adults and families.",
+            labels: { address: "Address", hours: "Hours", phone: "Phone" }
+        }
+    };
+
+    if (langSelect) {
+        langSelect.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            const t = translations[lang];
+
+            document.getElementById('header-title').textContent = t.headerTitle;
+            document.getElementById('header-subtitle').textContent = t.headerSubtitle;
+            document.getElementById('search-input').placeholder = t.searchPlaceholder;
+            document.getElementById('tts-btn').textContent = t.ttsText;
+            document.getElementById('chat-title').textContent = t.chatTitle;
+
+            document.querySelector('#card-1 .card-title').textContent = t.card1Title;
+            document.querySelector('#card-1 .card-desc').textContent = t.card1Desc;
+            document.querySelector('#card-2 .card-title').textContent = t.card2Title;
+            document.querySelector('#card-2 .card-desc').textContent = t.card2Desc;
+            document.querySelector('#card-3 .card-title').textContent = t.card3Title;
+            document.querySelector('#card-3 .card-desc').textContent = t.card3Desc;
+
+            document.querySelectorAll('.label-address').forEach(el => el.textContent = t.labels.address);
+            document.querySelectorAll('.label-hours').forEach(el => el.textContent = t.labels.hours);
+            document.querySelectorAll('.label-phone').forEach(el => el.textContent = t.labels.phone);
+        });
+    }
 
     if (ttsBtn) {
         ttsBtn.addEventListener('click', () => {
@@ -91,18 +146,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.speechSynthesis.cancel();
                 const mainText = document.querySelector('main').innerText;
                 const utterance = new SpeechSynthesisUtterance(mainText);
-                utterance.lang = langSelect ? (langSelect.value === 'en' ? 'en-US' : 'sv-SE') : 'sv-SE';
+                utterance.lang = langSelect && langSelect.value === 'en' ? 'en-US' : 'sv-SE';
                 window.speechSynthesis.speak(utterance);
             } else {
                 alert('Text-to-speech is not supported in your browser.');
-            }
-        });
-    }
-
-    if (langSelect) {
-        langSelect.addEventListener('change', (e) => {
-            if (e.target.value === 'en') {
-                alert('English view toggled! The AI chat will reply in English.');
             }
         });
     }

@@ -3,134 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Vägvisare - Botkyrka</title>
+    <title>Botkyrka Assistance & Guide</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Projektmärkning / Disclaimer -->
-    <div style="background-color: #fff3cd; color: #856404; padding: 10px; text-align: center; font-size: 0.9em; border-bottom: 1px solid #ffeeba;">
-        ℹ️ <strong>Obs!</strong> Detta är ett oberoende elev-/utvecklingsprojekt och inte Botkyrka kommuns officiella webbplats.
-    </div>
-
     <header>
-        <h1>Botkyrka Digital Vägvisare</h1>
-        <p>Hitta rätt hjälp och stöd i din närhet.</p>
+        <h1 id="header-title">Botkyrka Assistent & Vägvisare</h1>
+        <p id="header-subtitle">Hitta rätt kommunal service och stöd i Botkyrka</p>
         
-        <!-- Steg 3: Tillgänglighets- & Språkfält -->
-        <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-            <button id="tts-btn" style="padding: 6px 12px; background: #ffffff; color: #005a9c; border: 1px solid #005a9c; border-radius: 4px; cursor: pointer; font-weight: bold;">🔊 Läs upp sidan</button>
-            <select id="lang-select" style="padding: 6px 12px; border-radius: 4px; border: 1px solid #ccc; cursor: pointer;">
-                <option value="sv">🇸🇪 Svenska</option>
-                <option value="en">🇬🇧 English</option>
+        <div class="controls">
+            <input type="text" id="search-input" placeholder="Sök service eller plats...">
+            <select id="lang-select">
+                <option value="sv">Svenska</option>
+                <option value="en">English</option>
             </select>
+            <button id="tts-btn">🔊 Läs upp text</button>
         </div>
     </header>
 
     <main>
-        <!-- Steg 2: Real-time Sökruta -->
-        <section style="margin-bottom: 20px;">
-            <input type="text" id="search-input" placeholder="🔍 Sök hjälpställe, adress eller tjänst (t.ex. Tumba, Bibliotek, Bistånd)..." style="width: 100%; padding: 12px; font-size: 1em; border: 2px solid #005a9c; border-radius: 6px; box-sizing: border-box;">
-        </section>
+        <section id="cards-container" class="grid-container">
+            <!-- Kort 1 -->
+            <div class="card" id="card-1">
+                <h3 class="card-title">1. Medborgarkontoret Tumba</h3>
+                <p class="card-desc">Få hjälp med konsumentvägledning, blanketter och allmänna frågor.</p>
+                <p>📍 <strong><span class="label-address">Adress</span>:</strong> Tumba Torg 101, Tumba</p>
+                <p>🕒 <strong><span class="label-hours">Öppettider</span>:</strong> Mån–Fre 09:00–16:30</p>
+                <p>📞 <strong><span class="label-phone">Telefon</span>:</strong> 08-530 610 00</p>
+                <a href="https://www.botkyrka.se/kommun-och-politik/kontakt-och-medborgarcenter/medborgarkontor" target="_blank" class="card-link">Gå till Medborgarkontoret ↗</a>
+                <span class="verified-date">Senast kontrollerad: 2026-03-30</span>
+            </div>
 
-        <!-- Hjälpkort med adress, öppettider, kontakt och direkta länkar -->
-        <section>
-            <h2>Hjälpställen i Botkyrka</h2>
-            <div class="card-grid" id="card-grid">
-                <div class="card">
-                    <h3>1. Medborgarkontoret Tumba</h3>
-                    <p>Hjälp med kommunala tjänster, vägledning och blanketter.</p>
-                    <hr style="margin: 10px 0; border: 0; border-top: 1px solid #eee;">
-                    <p><strong>📍 Adress:</strong> Tumba Torg 101, Tumba</p>
-                    <p><strong>🕒 Öppettider:</strong> Mån–Fre 09:00–16:30</p>
-                    <p><strong>📞 Telefon:</strong> 08-530 610 00</p>
-                    <p><a href="https://www.botkyrka.se/kommun-och-politik/kontakt-och-medborgarservice/medborgarkontor" target="_blank" rel="noopener noreferrer">Gå till Medborgarkontoret ↗</a></p>
-                    <small style="color: #6c757d;">Senast kontrollerad: 2026-03-30</small>
-                </div>
+            <!-- Kort 2 -->
+            <div class="card" id="card-2">
+                <h3 class="card-title">2. Fittja Bibliotek & Digital Hjälp</h3>
+                <p class="card-desc">Låna böcker, använda datorer, skriva ut och få hjälp med digitala tjänster.</p>
+                <p>📍 <strong><span class="label-address">Adress</span>:</strong> Fittja Torg 3, Fittja</p>
+                <p>🕒 <strong><span class="label-hours">Öppettider</span>:</strong> Mån–Tors 10:00–19:00, Fre 10:00–17:00</p>
+                <p>📞 <strong><span class="label-phone">Telefon</span>:</strong> 08-530 626 40</p>
+                <a href="https://bibliotek.botkyrka.se/sv/library-page/fittja-bibliotek" target="_blank" class="card-link">Gå till Fittja Bibliotek ↗</a>
+                <span class="verified-date">Senast kontrollerad: 2026-03-30</span>
+            </div>
 
-                <div class="card">
-                    <h3>2. Fittja Bibliotek & Info</h3>
-                    <p>Stöd med digitala tjänster, läxhjälp och information.</p>
-                    <hr style="margin: 10px 0; border: 0; border-top: 1px solid #eee;">
-                    <p><strong>📍 Adress:</strong> Fittja Torg 3, Fittja</p>
-                    <p><strong>🕒 Öppettider:</strong> Mån–Tors 10:00–19:00, Fre 10:00–17:00</p>
-                    <p><strong>📞 Telefon:</strong> 08-530 626 40</p>
-                    <p><a href="https://bibliotek.botkyrka.se/sv/library-page/fittja-bibliotek" target="_blank" rel="noopener noreferrer">Gå till Fittja Bibliotek ↗</a></p>
-                    <small style="color: #6c757d;">Senast kontrollerad: 2026-03-30</small>
-                </div>
-
-                <div class="card">
-                    <h3>3. Socialtjänstens Mottagning</h3>
-                    <p>Rådgivning och akut stöd för vuxna och familjer.</p>
-                    <hr style="margin: 10px 0; border: 0; border-top: 1px solid #eee;">
-                    <p><strong>📍 Adress:</strong> Munkhättevägen 45, Tumba</p>
-                    <p><strong>🕒 Öppettider:</strong> Mån–Fre 08:30–16:00</p>
-                    <p><strong>📞 Telefon:</strong> 08-530 610 00</p>
-                    <p><a href="https://www.botkyrka.se/stod-och-omsorg/kontakta-socialtjansten" target="_blank" rel="noopener noreferrer">Gå till Socialtjänsten ↗</a></p>
-                    <small style="color: #6c757d;">Senast kontrollerad: 2026-03-30</small>
-                </div>
+            <!-- Kort 3 -->
+            <div class="card" id="card-3">
+                <h3 class="card-title">3. Socialtjänstens Mottagning</h3>
+                <p class="card-desc">Rådgivning och akut stöd för vuxna och familjer.</p>
+                <p>📍 <strong><span class="label-address">Adress</span>:</strong> Munkhättevägen 45, Tumba</p>
+                <p>🕒 <strong><span class="label-hours">Öppettider</span>:</strong> Mån–Fre 08:30–16:00</p>
+                <p>📞 <strong><span class="label-phone">Telefon</span>:</strong> 08-530 610 00</p>
+                <a href="https://www.botkyrka.se/stod-och-omsorg/ekonomi-och-forsorjningsstod/forsorjningsstod" target="_blank" class="card-link">Gå till Socialtjänsten ↗</a>
+                <span class="verified-date">Senast kontrollerad: 2026-03-30</span>
             </div>
         </section>
 
-        <!-- Klickbara guider -->
-        <section class="guides">
-            <h2>Korta Guider</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>Guide 1: Hur du söker ekonomiskt bistånd</h3>
-                    <p>Klicka nedan för att se hela steg-för-steg-guiden.</p>
-                    <details style="margin-top: 10px; cursor: pointer;">
-                        <summary style="font-weight: bold; color: #005a9c;">Visa alla steg 👇</summary>
-                        <ol style="margin-top: 10px; padding-left: 20px; line-height: 1.5;">
-                            <li>Förbered kontoutdrag och hyresavier för de senaste 3 månaderna.</li>
-                            <li>Logga in på Botkyrka kommuns e-tjänst för ekonomiskt bistånd via e-legitimation.</li>
-                            <li>Fyll i ansökan noggrant och bifoga dina underlag.</li>
-                            <li>Skicka in ansökan och vänta på att en handläggare kontaktar dig.</li>
-                        </ol>
-                    </details>
-                    <div style="margin-top: 10px;">
-                        <small style="color: #6c757d;">Källa: <a href="https://www.botkyrka.se/stod-och-omsorg/ekonomiskt-stod/ekonomiskt-bistand" target="_blank">botkyrka.se (Ekonomiskt bistånd)</a> | Senast kontrollerad: 2026-03-30</small>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>Guide 2: Kontakta kommunen effektivt</h3>
-                    <p>Klicka nedan för att se tips för snabbast kontakt.</p>
-                    <details style="margin-top: 10px; cursor: pointer;">
-                        <summary style="font-weight: bold; color: #005a9c;">Visa alla steg 👇</summary>
-                        <ol style="margin-top: 10px; padding-left: 20px; line-height: 1.5;">
-                            <li>Förbered ditt ärende och eventuellt fastighets- eller personnummer.</li>
-                            <li>Ring Kundcenter på 08-530 610 00 under vardagar (bäst tid: kl 09:00–11:00).</li>
-                            <li>För vanliga frågor, använd e-tjänsterna dygnet runt på kommunens hemsida.</li>
-                        </ol>
-                    </details>
-                    <div style="margin-top: 10px;">
-                        <small style="color: #6c757d;">Källa: <a href="https://www.botkyrka.se/kommun-och-politik/kontakt-och-medborgarservice" target="_blank">botkyrka.se (Kontakt)</a> | Senast kontrollerad: 2026-03-30</small>
-                    </div>
-                </div>
+        <!-- AI Chatt Section -->
+        <section class="chat-section">
+            <h2 id="chat-title">Botkyrka AI-Assistent</h2>
+            <div id="chat-output" class="chat-box">
+                <div class="bot-msg"><strong>Botkyrka AI:</strong> Hello! Ask me about opening hours, addresses, contact info, or digital aid in Botkyrka.</div>
             </div>
-        </section>
-
-        <!-- AI-Chatt med säkerhetsvarning -->
-        <section class="ai-section">
-            <h2>Botkyrka AI-Assistent</h2>
-            
-            <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 4px; margin-bottom: 10px; font-size: 0.9em; border: 1px solid #f5c6cb;">
-                ⚠️ <strong>Säkerhetsvarning:</strong> Ange aldrig personnummer, lösenord, kontonummer eller BankID-koder i chatten. Chatten ger endast generell vägledning.
-            </div>
-
-            <div class="chat-container">
-                <div id="chat-output" style="background: #e9ecef; padding: 15px; border-radius: 5px; height: 120px; overflow-y: auto; margin-bottom: 10px;">
-                    Hej! Ställ en fråga om våra hjälpställen eller guider här nedanför.
-                </div>
-                <input type="text" id="user-input" placeholder="Skriv din fråga här..." style="width: 75%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-                <button id="send-btn" style="width: 20%; padding: 10px; background: #005a9c; color: white; border: none; border-radius: 4px; cursor: pointer;">Fråga</button>
+            <div class="chat-input-area">
+                <input type="text" id="user-input" placeholder="Skriv din fråga här / Type your question...">
+                <button id="send-btn">Skicka</button>
             </div>
         </section>
     </main>
-
-    <footer>
-        <p>&copy; 2026 Botkyrka Vägvisare (Elevprojekt / GenAI Prototype)</p>
-    </footer>
 
     <script src="app.js"></script>
 </body>
