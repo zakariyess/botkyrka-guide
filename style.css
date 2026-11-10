@@ -2,73 +2,155 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f7f6;
+    background-color: #f4f6f8;
     color: #333;
     padding: 20px;
 }
 
 header {
-    text-align: center;
-    background-color: #005a9c;
+    background-color: #005691;
     color: white;
     padding: 30px 20px;
-    border-radius: 8px;
-    margin-bottom: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 header h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     margin-bottom: 10px;
 }
 
-main {
-    max-width: 1000px;
-    margin: 0 auto;
+header p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
 }
 
-section {
-    margin-bottom: 40px;
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-h2 {
-    color: #005a9c;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #005a9c;
-    padding-bottom: 5px;
+.controls input, .controls select, .controls button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
 }
 
-.card-grid {
+.controls input {
+    width: 250px;
+}
+
+.controls button {
+    background-color: #e67e22;
+    color: white;
+    cursor: pointer;
+}
+
+.grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    margin-bottom: 30px;
 }
 
 .card {
     background: white;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card h3 {
-    color: #222;
+.card-title {
+    color: #005691;
     margin-bottom: 10px;
 }
 
-footer {
-    text-align: center;
-    margin-top: 40px;
+.card-desc {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.card-info p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.card-footer {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card-link {
+    color: #005691;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+.verified-date {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.chat-section {
+    background: white;
     padding: 20px;
-    color: #666;
-    font-size: 0.9rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.chat-section h2 {
+    margin-bottom: 15px;
+    color: #005691;
+}
+
+.chat-box {
+    height: 180px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 12px;
+    border-radius: 5px;
+    background: #fafafa;
+    margin-bottom: 12px;
+}
+
+.chat-input-area {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.chat-input-area button {
+    padding: 10px 20px;
+    background-color: #005691;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
